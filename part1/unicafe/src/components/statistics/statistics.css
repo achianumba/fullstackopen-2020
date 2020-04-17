@@ -6,7 +6,7 @@
     padding: 0 8px;
   }
   
-  #average, #positive, #total {
+  .average, .positive, .total {
     font-size: 1.7em;
     margin: 0;
     text-align: center;
@@ -19,4 +19,16 @@
     font-size: 1.5em;
     vertical-align: middle;
     padding: 0 10px;
+  }
+
+  .no-feedback {
+    margin: auto 0;
+  }
+
+  .no-feedback > h2, .no-feedback > p {
+    text-align: center;
+  }
+
+  .no-feedback > p {
+    font-size: 1.2em;
   }

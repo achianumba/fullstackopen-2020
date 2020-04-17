@@ -22,6 +22,8 @@ const Statistics = ({
             btnClass="btn-good"
             btnText="Good"
             click={clickHandler}
+            statClass={ total < 1 ? 'hide' : 'stat'}
+            othersClass={ total < 1 ? 'hide' : 'others'}
           />
 
           <Card
@@ -30,6 +32,8 @@ const Statistics = ({
             btnClass="btn-neutral"
             btnText="Good"
             click={clickHandler}
+            statClass={ total < 1 ? 'hide' : 'stat'}
+            othersClass={ total < 1 ? 'hide' : 'others'}
           />
 
           <Card
@@ -38,19 +42,38 @@ const Statistics = ({
             btnClass="btn-bad"
             btnText="Good"
             click={clickHandler}
+            statClass={ total < 1 ? 'hide' : 'stat'}
+            othersClass={ total < 1 ? 'hide' : 'others'}
           />
         </div>
 
-        <p id="total">
-          We've had <span className="figure">{total}</span> feedback(s) so far.
+        {/* When total feedback = 0 */}
+      <div className={total < 1 ? "no-feedback" : "hide"}>
+        <h2>No feedback given</h2>
+        <p>
+          Give us some feedback about our services
+          <br />
+          by clicking a boutton above.
         </p>
-        <p id="positive">
-          <span className="figure">{ isNaN(positive) || positive === Infinity ?0 : positive.toFixed(2) } %</span>{" "}
-          of them are positve.
-        </p>
-        <p id="average">
-          On average, our customers rate us <span className="figure">{ isNaN(average) ? 0 : average.toFixed(2) }%</span>.
-        </p>
+      </div>
+
+      {/*Aggregate statistics */}
+      <p className={total < 1 ? "hide" : "total"}>
+        We've had <span className="figure">{total}</span> feedback(s) so far.
+      </p>
+      <p className={total < 1 ? "hide" : "positive"}>
+        <span className="figure">
+          {isNaN(positive) || positive === Infinity ? 0 : positive.toFixed(2)} %
+        </span>{" "}
+        of them are positve.
+      </p>
+      <p className={total < 1 ? "hide" : "average"}>
+        On average, our customers rate us{" "}
+        <span className="figure">
+          {isNaN(average) ? 0 : average.toFixed(2)}%
+        </span>
+        .
+      </p>
       </main>
     )
 }
