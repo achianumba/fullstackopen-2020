@@ -2,7 +2,7 @@
 
 _My solutions to the **unicafe** exercises in part1 of **FullStackOpen 2020** web development course._
 
-A mock feedback system built with React. The app allows users to rate a service as good, neutral, or bad.
+**unicafe** is a mock feedback system built with React. The app allows users to rate a service as good, neutral, or bad.
 
 This project is built with React using Create-React-App.
 
