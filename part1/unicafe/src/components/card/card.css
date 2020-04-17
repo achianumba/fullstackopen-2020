@@ -1,0 +1,32 @@
+.card {
+    flex: 1 0 25%;
+    max-width: 288px;
+    margin: 16px;
+    padding: 16px;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    transition: .3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0 16px 8px #eeeeee;
+    transform: scale(1.1);
+}
+
+.stat {
+    text-align: center;
+    font-size: 4em;
+    margin: 32px 0;
+}
+
+.others {
+    margin: 0;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        flex-basis: 100%;
+    }
+}
