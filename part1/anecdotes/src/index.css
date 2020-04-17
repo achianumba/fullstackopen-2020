@@ -8,15 +8,113 @@ html, body {
 
 body {
   min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0;
   padding: 8px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #333333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+#root {
+  flex: 1 0 100%;
+  max-width: 862px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+#anecdote-today, #anecdote-most-votes {
+  flex: 1 0 50%;
+  max-width: 400px;
+  margin: 16px;
+  padding: 16px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #f0f0f0;
+}
+
+#anecdote-today {
+  padding-bottom: 100px;
+}
+
+#anecdote-today {
+  position: relative;
+}
+
+.anecdote {
+  font-size: 1.3em;
+  color: #f0f0f0;
+}
+
+.votes {
+  font-size: 1.5em;
+  color: #f0f0f0;
+  text-align: right;
+}
+
+#btn-container {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  max-width: 100%;
+  margin: 0;
 }
 
 .btn {
-  display: block;
+  float: right;
+  margin: 0;
+  padding: 8px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1em;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.btn-random {
+  margin-right: 16px;
+  background-color: #19be19;
+}
+
+.btn-vote {
+  background-color: #1e90ff;
+}
+
+.btn-random:hover {
+  border: 2px solid #19be19;
+  background-color: transparent;
+}
+
+.btn-vote:hover {
+  border: 2px solid #1e90ff;
+  background-color: transparent;
+}
+
+@media screen and (max-width: 844px) {
+  #root {
+    flex-wrap: wrap;
+  }
+
+  #anecdote-today, #anecdote-most-votes {
+    flex: 1 0 100%;
+    max-width: 400px;
+    margin: 16px 0;
+  }
+}
+
+@media screen and (max-width: 844px) {
+  .btn {
+    padding: 8px 16px;
+  }
+  
+  .btn-random {
+    margin-right: 8px;
+  }
 }

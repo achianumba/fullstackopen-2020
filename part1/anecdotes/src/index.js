@@ -11,6 +11,7 @@ const App = (props) => {
   }
 
   const [vote, setVote] = useState(points);
+  let max = Math.max(...vote);
 
   const randomQuote = () => {
     let quote = Math.floor(Math.random() * anecdotes.length);
@@ -24,17 +25,29 @@ const App = (props) => {
   };
 
   return (
-    <div>
-      {props.anecdotes[selected]}
-      <br />
-      Has {vote[selected]} votes.
-      <button className="btn btn-vote" onClick={voteHanler}>
-        Vote
-      </button>
-      <button className="btn btn-random" onClick={randomQuote}>
-        Next Anecdote
-      </button>
-    </div>
+    <>
+      <div id="anecdote-today">
+        <h1>Anecdote of the day</h1>
+        <p className="anecdote">{props.anecdotes[selected]}</p>
+
+        <div id="btn-container">
+          <p className="votes">Votes: {vote[selected]}</p>
+          <button className="btn btn-vote" onClick={voteHanler}>
+            Vote
+          </button>
+
+          <button className="btn btn-random" onClick={randomQuote}>
+            Next Anecdote
+          </button>
+        </div>
+      </div>
+
+      <div id="anecdote-most-votes">
+        <h1 className="most-votes">Anecdote with the most votes</h1>
+        <p className="anecdote">{props.anecdotes[vote.indexOf(max)]}</p>
+        <p className="votes">Votes: {Math.max(...vote)}</p>
+      </div>
+    </>
   );
 };
 
