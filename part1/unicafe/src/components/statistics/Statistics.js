@@ -1,53 +1,56 @@
-import React from 'react';
-import Card from '../card/Card';
-import './statistics.css';
+import React from "react";
+import "./statistics.css";
+import Statistic from "../statistic/Statistic";
 
 const Statistics = ({
-    good,
-    neutral,
-    bad,
-    clickHandler,
-    total,
-    positive,
-    average
+  good,
+  neutral,
+  bad,
+  clickHandler,
+  total,
+  positive,
+  average,
 }) => {
-    return (
-        <main id="main">
-        <h1 id="question">How would you rate our services?</h1>
+  return (
+    <main id="main">
+      <h1 id="question">How would you rate our services?</h1>
 
-        <div id="options">
-          <Card
-            option="Good"
-            stat={good}
-            btnClass="btn-good"
-            btnText="Good"
-            click={clickHandler}
-            statClass={ total < 1 ? 'hide' : 'stat'}
-            othersClass={ total < 1 ? 'hide' : 'others'}
-          />
+      <div id="options">
+        <Statistic
+          type="card"
+          text="Good"
+          value={good}
+          btnClass="btn-good"
+          clickHandler={clickHandler}
+          sIfFeedback="stat"
+          oIfFeedback="others"
+          total={total}
+        />
 
-          <Card
-            option="Neutral"
-            stat={neutral}
-            btnClass="btn-neutral"
-            btnText="Good"
-            click={clickHandler}
-            statClass={ total < 1 ? 'hide' : 'stat'}
-            othersClass={ total < 1 ? 'hide' : 'others'}
-          />
+        <Statistic
+          type="card"
+          text="Neutral"
+          value={neutral}
+          btnClass="btn-neutral"
+          clickHandler={clickHandler}
+          sIfFeedback="stat"
+          oIfFeedback="others"
+          total={total}
+        />
 
-          <Card
-            option="Bad"
-            stat={bad}
-            btnClass="btn-bad"
-            btnText="Good"
-            click={clickHandler}
-            statClass={ total < 1 ? 'hide' : 'stat'}
-            othersClass={ total < 1 ? 'hide' : 'others'}
-          />
-        </div>
+        <Statistic
+          type="card"
+          text="Bad"
+          value={bad}
+          btnClass="btn-bad"
+          clickHandler={clickHandler}
+          sIfFeedback="stat"
+          oIfFeedback="others"
+          total={total}
+        />
+      </div>
 
-        {/* When total feedback = 0 */}
+      {/* When total feedback = 0 */}
       <div className={total < 1 ? "no-feedback" : "hide"}>
         <h2>No feedback given</h2>
         <p>
@@ -58,24 +61,24 @@ const Statistics = ({
       </div>
 
       {/*Aggregate statistics */}
-      <p className={total < 1 ? "hide" : "total"}>
-        We've had <span className="figure">{total}</span> feedback(s) so far.
-      </p>
-      <p className={total < 1 ? "hide" : "positive"}>
-        <span className="figure">
-          {isNaN(positive) || positive === Infinity ? 0 : positive.toFixed(2)} %
-        </span>{" "}
-        of them are positve.
-      </p>
-      <p className={total < 1 ? "hide" : "average"}>
-        On average, our customers rate us{" "}
-        <span className="figure">
-          {isNaN(average) ? 0 : average.toFixed(2)}%
-        </span>
-        .
-      </p>
-      </main>
-    )
-}
+      <Statistic type="total" value={total} total={total} tIfFeedback="total" />
 
-export default Statistics
+      <Statistic
+        type="positive"
+        text=""
+        total={total}
+        positive={positive}
+        pIfFeedback="positive"
+      />
+
+      <Statistic
+        type="average"
+        total={total}
+        average={average}
+        aIfFeedback="average"
+      />
+    </main>
+  );
+};
+
+export default Statistics;

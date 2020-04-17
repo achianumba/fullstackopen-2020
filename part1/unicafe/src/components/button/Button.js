@@ -1,7 +1,7 @@
 import React from "react";
 import './button.css';
 
-const Button = ({ handleClick, text, addClass }) => (
+const Button = ({ text, addClass }) => (
   <button className={"btn " + addClass}>
     {text}
   </button>
