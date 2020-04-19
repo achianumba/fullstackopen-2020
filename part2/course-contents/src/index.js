@@ -25,10 +25,15 @@ const App = () => {
         name: "State of a component",
         exercises: 14,
         id: 3,
+      },
+      {
+        name: "Redux",
+        exercises: 11,
+        id: 4
       }
-    ],
+    ]
   };
-
+  
   return (
     <div>
       <Course course={course} />
@@ -45,6 +50,7 @@ const Course = ({ course }) => {
     <div className="course">
       <Header name={course.name} />
       <Content parts={course.parts} />
+      <Total parts={course.parts} />
     </div>
   );
 };
@@ -72,5 +78,18 @@ const Part = ({ part, exercises }) => (
     {part} {exercises}
   </p>
 );
+/*
+=====================
+Total
+=====================
+*/
+const Total = ({ parts }) => (
+  <p className="total">
+    Total of {
+      parts.reduce((x, { exercises}) => x + exercises, 0)
+    } exercises
+  </p>
+);
+
 
 ReactDOM.render(<App />, document.getElementById("root"));
